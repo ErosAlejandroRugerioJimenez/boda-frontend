@@ -1,0 +1,22 @@
+/* =========================================
+   SCROLLBAR GLOBAL (Estilo Premium)
+   ========================================= */
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #0a0a0a;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a; 
+  border-left: 1px solid rgba(212, 175, 55, 0.1); /* Una línea súper sutil para separar */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.5); 
+  border-radius: 10px;
+  border: 3px solid #0a0a0a; /* Esto crea un efecto de "margen" interno muy elegante */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 1); 
+}

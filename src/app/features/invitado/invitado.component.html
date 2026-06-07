@@ -1,0 +1,54 @@
+<div class="contenedor-movil">
+  <div class="tarjeta-cristal">
+    
+    <div class="cabecera">
+      <h1 class="titulo-boda">💍 ¡Deja tu saludo! 🥂</h1>
+      <p class="subtitulo">Los novios y el DJ leerán tu mensaje en la pantalla principal.</p>
+    </div>
+
+    <form (ngSubmit)="enviar()" #saludoForm="ngForm" *ngIf="!enviado" class="formulario">
+      
+      <mat-form-field appearance="outline" class="campo-completo">
+        <mat-label>Tu Nombre o Familia</mat-label>
+        <input matInput [(ngModel)]="mensaje.invitado" name="invitado" required [disabled]="enviando">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="campo-completo">
+        <mat-label>Tu Mensaje</mat-label>
+        <textarea matInput #mensajeInput [(ngModel)]="mensaje.texto" name="texto" rows="4" required [disabled]="enviando" maxlength="200"></textarea>
+        <mat-hint align="end">{{ mensajeInput.value.length }} / 200</mat-hint>
+      </mat-form-field>
+
+      <div class="seccion-foto">
+        <input type="file" #inputFoto accept="image/*" (change)="onFotoSeleccionada($event)" style="display: none;">
+        
+        <button mat-stroked-button type="button" class="btn-adjuntar" (click)="inputFoto.click()" [disabled]="enviando">
+          📸 {{ nombreArchivo ? 'Cambiar foto' : 'Adjuntar foto (Opcional)' }}
+        </button>
+        
+        <div *ngIf="previsualizacionUrl" class="preview-contenedor">
+          <div class="preview-wrapper">
+            <button type="button" class="btn-quitar-foto" (click)="quitarFoto(inputFoto)" title="Quitar foto">✖</button>
+            <img [src]="previsualizacionUrl" alt="Previsualización" class="img-preview">
+          </div>
+        </div>
+      </div>
+      
+      <p *ngIf="nombreArchivo" class="nombre-archivo">
+        ✅ Cargada : <strong>{{ nombreArchivo }}</strong>
+      </p>
+      
+      <button mat-raised-button color="primary" type="submit" [disabled]="enviando || saludoForm.invalid" class="btn-enviar">
+        <span *ngIf="!enviando">Enviar Saludo 💌</span>
+        <mat-spinner diameter="24" *ngIf="enviando"></mat-spinner>
+      </button>
+
+    </form>
+
+    <div class="mensaje-exito" *ngIf="enviado">
+      <h2 class="titulo-exito">¡Gracias! ✨</h2>
+      <p>Tu mensaje ya está en la pantalla del DJ.</p>
+    </div>
+
+  </div>
+</div>

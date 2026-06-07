@@ -1,0 +1,309 @@
+.pantalla-dj {
+  background-color: #0a0a0a;
+  color: white;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: linear-gradient(90deg, #1f1c08 0%, #3d3510 50%, #1f1c08 100%);
+  text-align: center;
+  padding: 20px;
+  border-bottom: 2px solid #d4af37;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+h1 {
+  margin: 0;
+  font-size: 3rem;
+  color: #ffd700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.contenedor-mensajes {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.vacio {
+  text-align: center;
+  color: #888;
+  margin-top: 50px;
+  font-style: italic;
+}
+
+.mensaje-card {
+  background-color: #1a1a1a;
+  border-left: 8px solid #d4af37;
+  padding: 25px;
+  border-radius: 10px;
+  /* 👇 COMBINAMOS TUS DOS ANIMACIONES AQUÍ 👇 */
+  animation: slideIn 0.5s ease-out, entradaBrillante 2.5s ease-out;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* EFECTO DE MENSAJE LEÍDO */
+.mensaje-card.leido {
+  opacity: 0.4;
+  filter: grayscale(0.8);
+  transition: all 0.3s ease;
+}
+
+.autor {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #d4af37;
+  margin-bottom: 10px;
+}
+
+.texto {
+  font-size: 2rem;
+  line-height: 1.4;
+  color: #f0f0f0;
+  font-style: italic;
+  word-wrap: break-word; 
+  overflow-wrap: break-word;
+}
+
+.pie-tarjeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  border-top: 1px solid rgba(212, 175, 55, 0.2); 
+  padding-top: 15px;
+}
+
+.hora {
+  font-size: 1rem;
+  color: #666;
+}
+
+.acciones-dj {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-accion {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.3); 
+  color: #ccc;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.btn-visto:hover {
+  background: rgba(76, 175, 80, 0.2);
+  border-color: #4CAF50;
+  color: white;
+}
+
+.btn-borrar:hover {
+  background: rgba(244, 67, 54, 0.2);
+  border-color: #F44336;
+  color: white;
+}
+
+/* TUS ANIMACIONES BASE */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* NUEVA ANIMACIÓN DE BRILLO */
+@keyframes entradaBrillante {
+  0%, 30% { box-shadow: 0 0 35px rgba(212, 175, 55, 0.8); }
+  100% { box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+}
+
+.mensaje-card.eliminando {
+  animation: fadeOutBounce 0.4s ease-in forwards !important;
+  pointer-events: none; 
+}
+
+@keyframes fadeOutBounce {
+  0% { opacity: 1; transform: scale(1); }
+  30% { transform: scale(1.02); }
+  100% { opacity: 0; transform: scale(0.8) translateY(-20px); }
+}
+
+.contenedor-foto {
+  margin: 15px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.foto-saludo {
+  max-width: 100%;
+  max-height: 350px; 
+  border-radius: 8px;
+  border: 2px solid rgba(212, 175, 55, 0.4); 
+  object-fit: contain; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  transition: transform 0.2s;
+}
+
+.foto-saludo:hover {
+  transform: scale(1.02); /* Pequeño zoom al pasar el mouse por la foto en la tarjeta */
+}
+
+/* =========================================
+   ESTILOS DE LA PANTALLA COMPLETA (Lightbox)
+   ========================================= */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.92); /* Fondo casi negro */
+  z-index: 9999; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  border: 3px solid #d4af37;
+  box-shadow: 0 0 50px rgba(212, 175, 55, 0.5); /* Resplandor dorado gigante */
+  cursor: default;
+}
+
+.btn-cerrar-lightbox {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.btn-cerrar-lightbox:hover {
+  transform: scale(1.2);
+  color: #d4af37;
+}
+/* =========================================
+   BOTÓN MAESTRO (Esquina derecha)
+   ========================================= */
+.btn-limpiar-maestro {
+  position: absolute;
+  right: 30px; /* Separación desde la derecha */
+  top: 50%; /* Lo empuja a la mitad */
+  transform: translateY(-50%); /* Lo centra verticalmente de forma exacta */
+  font-size: 1rem;
+  padding: 10px 20px;
+}
+
+/* =========================================
+   MODAL DE CONFIRMACIÓN PERSONALIZADO
+   ========================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInModal 0.2s ease-out;
+}
+
+.modal-confirmacion {
+  background-color: #1a1a1a;
+  border: 2px solid #d4af37;
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  animation: popInModal 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-confirmacion h3 {
+  color: #ffd700;
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.modal-confirmacion p {
+  color: #ccc;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+
+.modal-botones {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+}
+
+.btn-modal {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.btn-modal:hover {
+  transform: scale(1.05);
+}
+
+.btn-cancelar {
+  background-color: transparent;
+  color: #888;
+  border: 1px solid #888;
+}
+
+.btn-cancelar:hover {
+  color: white;
+  border-color: white;
+}
+
+.btn-confirmar {
+  background-color: #e74c3c;
+  color: white;
+  box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
+}
+
+.btn-confirmar:hover {
+  background-color: #c0392b;
+}
+
+@keyframes fadeInModal {
+  from { background-color: rgba(0, 0, 0, 0); }
+  to { background-color: rgba(0, 0, 0, 0.8); }
+}
+
+@keyframes popInModal {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}

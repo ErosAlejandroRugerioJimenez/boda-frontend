@@ -1,0 +1,60 @@
+<div class="pantalla-dj">
+  
+  <div class="header" style="position: relative;">
+    <h1>💬 Mensajes en Vivo 💬</h1>
+    
+    <button class="btn-accion btn-borrar btn-limpiar-maestro" (click)="abrirModalLimpiar()">
+      🧹 Limpiar Tablero
+    </button>
+  </div>
+  
+  <div class="contenedor-mensajes">
+    <h2 *ngIf="saludos.length === 0" class="vacio">Esperando los saludos de los invitados...</h2>
+    
+    <div *ngFor="let m of saludos; let i = index" class="mensaje-card" [class.leido]="m.leido" [class.eliminando]="m.eliminando">
+      
+      <div class="autor">{{ m.invitado }}</div>      
+      <div class="texto">"{{ m.texto }}"</div>
+      
+      <div class="contenedor-foto" *ngIf="m.imagen">
+        <img [src]="'http://localhost:8080' + m.imagen" 
+             alt="Foto adjunta" 
+             class="foto-saludo"
+             (click)="abrirFoto('http://localhost:8080' + m.imagen)"
+             style="cursor: zoom-in;"
+             title="Clic para ampliar">
+      </div>
+      
+      <div class="pie-tarjeta">
+        <div class="hora" *ngIf="m.fechaEnvio">{{ m.fechaEnvio | date:'shortTime' }}</div>
+        
+        <div class="acciones-dj">
+          <button class="btn-accion btn-visto" (click)="marcarVisto(m)">
+            {{ m.leido ? '✅ Leído' : '✅✅ Marcar' }}
+          </button>
+          
+          <button class="btn-accion btn-borrar" (click)="borrarMensaje(i, m)">
+            🗑️ Borrar
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="lightbox-overlay" *ngIf="fotoExpandida" (click)="cerrarFoto()">
+  <button class="btn-cerrar-lightbox" (click)="cerrarFoto()">✖</button>
+  <img [src]="fotoExpandida" class="lightbox-img" (click)="$event.stopPropagation()">
+</div>
+<div class="modal-overlay" *ngIf="mostrarModalLimpiar" (click)="cerrarModalLimpiar()">
+  <div class="modal-confirmacion" (click)="$event.stopPropagation()">
+    <h3>⚠️ ¿Limpiar toda la pantalla?</h3>
+    <p>Se borrarán todos los mensajes actuales de la vista del DJ.</p>
+    
+    <div class="modal-botones">
+      <button class="btn-modal btn-cancelar" (click)="cerrarModalLimpiar()">Cancelar</button>
+      <button class="btn-modal btn-confirmar" (click)="confirmarLimpiarTablero()">Sí, limpiar todo</button>
+    </div>
+  </div>
+</div>
