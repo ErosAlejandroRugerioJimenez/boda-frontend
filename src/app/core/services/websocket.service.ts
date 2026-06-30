@@ -19,7 +19,7 @@ export class WebsocketService {
       this.rxStomp.configure({
         // 1. Cambiamos http:// por ws:// (o wss:// en producción)
         // 2. Apuntamos al endpoint exacto que definiste en tu WebSocketConfig de Spring Boot
-        brokerURL: 'ws://localhost:8080/ws-boda',
+        brokerURL: 'ws://52.91.30.101:8080/ws-boda',
         reconnectDelay: 5000, 
         
         // 👇 ¡AQUÍ ESTÁN LOS HEARTBEATS! 👇

@@ -17,10 +17,10 @@
       <div class="texto">"{{ m.texto }}"</div>
       
       <div class="contenedor-foto" *ngIf="m.imagen">
-        <img [src]="'http://localhost:8080' + m.imagen" 
+        <img [src]="m.imagen"
              alt="Foto adjunta" 
              class="foto-saludo"
-             (click)="abrirFoto('http://localhost:8080' + m.imagen)"
+            (click)="abrirFoto(m.imagen)"
              style="cursor: zoom-in;"
              title="Clic para ampliar">
       </div>

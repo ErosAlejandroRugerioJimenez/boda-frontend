@@ -9,10 +9,10 @@ export class MensajeService {
 
   // AQUÍ ESTÁ EL CAMBIO PRINCIPAL
   // Cambiamos 'http://localhost:8080/historial' por la ruta completa:
-  private historialUrl = 'http://localhost:8080/api/mensajes/historial';
+  private historialUrl = 'http://52.91.30.101:8080/api/mensajes/historial';
   
   // Te dejo también la de enviar, para que coincida con tu backend:
-  private enviarUrl = 'http://localhost:8080/api/mensajes/enviar';
+  private enviarUrl = 'http://52.91.30.101:8080/api/mensajes/enviar';
 
   constructor(private http: HttpClient) { }
 

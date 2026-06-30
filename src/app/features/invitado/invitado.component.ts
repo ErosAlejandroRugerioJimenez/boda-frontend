@@ -86,7 +86,7 @@ export class InvitadoComponent {
       const formData = new FormData();
       formData.append('foto', this.archivoSeleccionado);
 
-      this.http.post<{url: string}>('http://localhost:8080/api/upload', formData).subscribe({
+      this.http.post<{url: string}>('http://52.91.30.101:8080/api/upload', formData).subscribe({
         next: (respuesta) => {
           this.mandarMensajeFinal(respuesta.url);
         },
