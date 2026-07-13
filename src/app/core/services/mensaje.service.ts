@@ -12,7 +12,7 @@ export class MensajeService {
 private historialUrl = '/api/mensajes/historial';
   
   // Te dejo también la de enviar, para que coincida con tu backend:
-  private enviarUrl = 'http:///api/mensajes/enviar';
+  private enviarUrl = '/api/mensajes/enviar';
 
   constructor(private http: HttpClient) { }
 
