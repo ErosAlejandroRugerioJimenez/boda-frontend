@@ -108,7 +108,7 @@ export class InvitadoComponent {
     };
 
     if (urlImagen) {
-      payloadFinal.imagen = urlImagen;
+      payloadFinal.imagen = urlImagen;  
     }
 
     this.mensajeService.enviarMensaje(payloadFinal).subscribe({
