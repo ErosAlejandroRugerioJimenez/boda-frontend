@@ -11,6 +11,7 @@
   overflow: hidden;
 }
 
+/* ... (Estilos de pseudo-elementos ::before y ::after se mantienen igual) ... */
 .contenedor-movil::before {
   content: "";
   position: absolute;
@@ -75,24 +76,7 @@
   width: 100%;
 }
 
-.btn-enviar {
-  height: 50px;
-  font-size: 1.1rem !important;
-  border-radius: 25px !important;
-  font-family: 'Montserrat', sans-serif !important;
-  font-weight: 600 !important;
-  background-color: #d4af37 !important; 
-  color: white !important;
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn-enviar:disabled {
-  background-color: #e0e0e0 !important;
-  color: #9e9e9e !important;
-}
+/* Se eliminó la definición vieja y plana de .btn-enviar */
 
 .mensaje-exito {
   padding: 30px 0;
@@ -102,17 +86,116 @@
 .titulo-exito {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.2rem;
-  color: #d4af37;
+  color: #a68a48; /* ACTUALIZADO A ORO SUAVE */
   margin-bottom: 10px;
 }
 
+/* =========================================
+   ESTILOS PREMIUM PARA FORMULARIO (CORREGIDOS)
+   ========================================= */
+
+/* Fondo de cristal para los inputs - UN POCO MÁS OPACO PARA LEGIBILIDAD */
+::ng-deep .input-cristal .mdc-text-field--outlined {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  border-radius: 8px;
+}
+
+/* Color del borde normal */
+::ng-deep .input-cristal .mdc-notched-outline__leading,
+::ng-deep .input-cristal .mdc-notched-outline__notch,
+::ng-deep .input-cristal .mdc-notched-outline__trailing {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 🔴 ELIMINAR EL MORADO DEL LABEL Y EL ASTERISCO EN FOCUS 🔴 */
+::ng-deep .input-cristal.mat-focused .mdc-floating-label,
+::ng-deep .input-cristal.mat-focused .mdc-floating-label--required::after {
+  color: #4a4a4a !important; /* Gris oscuro elegante en lugar de morado */
+}
+
+/* Cambiar el color de la rayita que parpadea (caret) al escribir */
+::ng-deep .input-cristal input,
+::ng-deep .input-cristal textarea {
+  caret-color: #a68a48 !important; /* Dorado suave */
+  color: #333333 !important; /* Texto negro/gris oscuro */
+}
+
+/* Borde dorado suave al hacer clic (Focus) */
+::ng-deep .input-cristal .mdc-text-field--focused .mdc-notched-outline__leading,
+::ng-deep .input-cristal .mdc-text-field--focused .mdc-notched-outline__notch,
+::ng-deep .input-cristal .mdc-text-field--focused .mdc-notched-outline__trailing {
+  border-color: #a68a48 !important; /* Oro champaña elegante */
+}
+
+/* =========================================
+   BOTONES PERSONALIZADOS
+   ========================================= */
+.btn-adjuntar {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.5); /* Más opaco */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil oscuro */
+  border-radius: 12px; /* Redondeado unificado */
+  color: #2c3e50; /* Color de texto cabecera */
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+  height: 45px;
+}
+
+.btn-adjuntar:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.btn-enviar {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  height: 50px; /* Unificado */
+  /* Nuevo degradado más sobrio y elegante (Oro Champaña) */
+  background: linear-gradient(135deg, #a68a48 0%, #8c733b 100%);
+  border: none;
+  border-radius: 25px; /* Más redondeado para este botón */
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(166, 138, 72, 0.3); /* Sombra suave */
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Efecto cuando el formulario es inválido y el botón está deshabilitado */
+.btn-enviar:disabled {
+  background: #cccccc !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+  color: #888888 !important;
+}
+
+.btn-enviar:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(166, 138, 72, 0.5);
+}
+
+/* ... (Animación fadeIn se mantiene igual) ... */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 /* =========================================
-   ESTILOS DE LA SECCIÓN DE FOTOS (Global)
+   ESTILOS DE LA SECCIÓN DE FOTOS (Global - Limpiado)
    ========================================= */
 .seccion-foto {
   margin: 10px 0;
@@ -123,15 +206,7 @@
   width: 100%;
 }
 
-.btn-adjuntar {
-  border-color: #d4af37 !important; 
-  color: #2c3e50 !important;
-  background-color: rgba(255, 255, 255, 0.4) !important;
-  font-family: 'Montserrat', sans-serif !important;
-  width: 100%;
-  height: 45px;
-  border-radius: 12px !important;
-}
+/* Se eliminó la definición redundante de .btn-adjuntar aquí */
 
 .preview-contenedor {
   margin-top: 15px;
@@ -155,11 +230,7 @@
   text-align: center;
 }
 
-/* =========================================
-   ESTILOS PARA QUITAR LA FOTO (La tachita)
-   (Ahora están FUERA del media query y blindados con !important)
-   ========================================= */
-
+/* ... (Estilos de .preview-wrapper, .btn-quitar-foto y media query se mantienen igual) ... */
 .preview-wrapper {
   position: relative;
   display: inline-block; 
@@ -167,8 +238,8 @@
 
 .btn-quitar-foto {
   position: absolute;
-  top: -12px;    
-  right: -12px;  
+  top: -12px;     
+  right: -12px;   
   background-color: #e74c3c !important; 
   color: white !important;
   border: 2px solid white !important; 
@@ -191,9 +262,6 @@
   background-color: #c0392b !important;
 }
 
-/* =========================================
-   📱 MAGIA PARA CELULARES
-   ========================================= */
 @media (max-width: 768px) {
   .contenedor-movil::after {
     background-size: cover; 

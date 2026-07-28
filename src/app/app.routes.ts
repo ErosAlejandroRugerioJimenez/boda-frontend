@@ -7,20 +7,20 @@ export const routes: Routes = [
   { 
     path: '', 
     component: InvitadoComponent,
-    title: '¡Manda tus saludos!' // El título de la pestaña del navegador
+    title: 'Boda Oli y Diana' // El título que verán los invitados
   },
   
   // 2. Ruta del DJ
   { 
     path: 'dj', 
     component: DjComponent,
-    title: 'Saludos en Vivo' 
+    title: 'Panel DJ - Saludos ' // Un título especial para el DJ
   },
 
-  // 3. Ruta comodín (Error 404 - Opcional pero recomendado)
+  // 3. Ruta comodín
   { 
     path: '**', 
-    redirectTo: '', // Si alguien escribe una ruta que no existe, lo mandamos a la principal
+    redirectTo: '', 
     pathMatch: 'full' 
   }
 ];
