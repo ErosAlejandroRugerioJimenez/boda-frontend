@@ -9,18 +9,26 @@
 
 .header {
   background: linear-gradient(90deg, #1f1c08 0%, #3d3510 50%, #1f1c08 100%);
-  text-align: center;
-  padding: 20px;
+  padding: 20px 30px;
   border-bottom: 2px solid #d4af37;
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  
+  /* Magia de Flexbox */
+  display: flex;
+  justify-content: space-between; /* Título a la izq, Botón a la der */
+  align-items: center; /* Centrados verticalmente */
+  flex-wrap: wrap; /* Si la pantalla es muy chica, permite que bajen de línea */
+  gap: 15px; /* Espacio entre título y botón */
 }
 
 h1 {
   margin: 0;
-  font-size: 3rem;
+  /* Fuente fluida: 1.8rem en celular, hasta 3rem en PC */
+  font-size: clamp(1.8rem, 5vw, 3rem); 
   color: #ffd700;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
+  line-height: 1.2; /* Evita que las líneas se encimen si el texto baja */
 }
 
 .contenedor-mensajes {
@@ -104,6 +112,12 @@ h1 {
   font-family: inherit;
   font-size: 0.9rem;
   transition: all 0.2s ease;
+  
+  /* NUEVO: Alineación perfecta entre icono y texto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espacio entre el icono y la palabra */
 }
 
 .btn-visto:hover {
@@ -207,12 +221,10 @@ h1 {
    BOTÓN MAESTRO (Esquina derecha)
    ========================================= */
 .btn-limpiar-maestro {
-  position: absolute;
-  right: 30px; /* Separación desde la derecha */
-  top: 50%; /* Lo empuja a la mitad */
-  transform: translateY(-50%); /* Lo centra verticalmente de forma exacta */
+  /* Quitamos todo lo absoluto. Ahora Flexbox lo controla */
   font-size: 1rem;
   padding: 10px 20px;
+  white-space: nowrap; /* Evita que el texto del botón se parta a la mitad */
 }
 
 /* =========================================
@@ -306,4 +318,20 @@ h1 {
 @keyframes popInModal {
   from { opacity: 0; transform: scale(0.8); }
   to { opacity: 1; transform: scale(1); }
+}
+/* =========================================
+   MAGIA PARA CELULARES (Media Query)
+   ========================================= */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column; /* Apilamos titulo arriba y boton abajo */
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .btn-limpiar-maestro {
+    width: 100%; /* El botón ocupa todo el ancho para ser fácil de tocar */
+    padding: 12px;
+  }
 }
