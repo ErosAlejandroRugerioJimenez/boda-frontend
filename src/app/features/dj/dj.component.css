@@ -71,22 +71,22 @@ h1 {
    ESTILOS MEJORADOS PARA EL DJ (AUTOR Y TEXTO)
    ========================================= */
 .autor {
-  font-family: 'Cormorant Garamond', serif; /* Tipografía elegante de boda */
-  font-size: 1.8rem !important; /* Letra mucho más grande y elegante */
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem !important; /* Subimos de 1.8rem a 2.5rem para que resalte muchísimo */
   font-weight: 600;
-  color: #d4af37 !important; /* Tono dorado para destacar */
-  margin-bottom: 10px;
+  color: #d4af37 !important;
+  margin-bottom: 12px;
 }
 
 .texto {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem !important; /* Texto más grande, limpio y legible a distancia */
-  line-height: 1.5;
+  font-size: 2.2rem !important; /* Subimos de 1.2rem a 2.2rem para que se lea desde el fondo del salón */
+  line-height: 1.4;
   color: #ffffff !important;
   font-style: italic;
   word-wrap: break-word; 
   overflow-wrap: break-word;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .pie-tarjeta {
