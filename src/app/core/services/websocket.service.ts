@@ -15,16 +15,17 @@ export class WebsocketService {
     this.rxStomp = new RxStomp();
 
     // ¡La magia! Solo activamos el WebSocket si estamos en un navegador real
-    if (this.isBrowser) {
+   if (this.isBrowser) {
+      // 1. Detectamos automáticamente si estamos en HTTP o HTTPS
+      const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+
       this.rxStomp.configure({
-        // 1. Cambiamos http:// por ws:// (o wss:// en producción)
-        // 2. Apuntamos al endpoint exacto que definiste en tu WebSocketConfig de Spring Boot
- brokerURL: `ws://${window.location.host}/ws-boda`,
-        reconnectDelay: 5000, 
+        // 2. Armamos la URL usando el protocolo correcto
+        brokerURL: `${wsProtocol}//${window.location.host}/ws-boda`,
         
-        // 👇 ¡AQUÍ ESTÁN LOS HEARTBEATS! 👇
-        heartbeatIncoming: 20000, // Angular espera señal de Spring Boot cada 20s
-        heartbeatOutgoing: 20000, // Angular envía señal a Spring Boot cada 20s
+        reconnectDelay: 5000, 
+        heartbeatIncoming: 20000,
+        heartbeatOutgoing: 20000,
       });
       this.rxStomp.activate();
     }
