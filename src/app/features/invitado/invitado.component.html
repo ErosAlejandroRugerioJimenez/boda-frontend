@@ -39,9 +39,10 @@
         </div>
       </div>
       
-      <p *ngIf="nombreArchivo" class="nombre-archivo">
-        <i class="fa-solid fa-check" style="color: #4CAF50;"></i> Cargada : <strong>{{ nombreArchivo }}</strong>
-      </p>
+      <!-- CAMBIAMOS ESTO PARA QUITAR EL NOMBRE LARGO -->
+<p *ngIf="nombreArchivo" class="nombre-archivo">
+  <i class="fa-solid fa-image" style="color: #a68a48;"></i> Imagen adjuntada correctamente
+</p>
       
       <button type="submit" [disabled]="enviando || saludoForm.invalid" class="btn-enviar">
         <span *ngIf="!enviando"><i class="fa-solid fa-paper-plane"></i> Enviar Saludo</span>

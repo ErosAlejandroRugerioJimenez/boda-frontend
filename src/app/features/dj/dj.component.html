@@ -1,7 +1,6 @@
 <div class="pantalla-dj">
   
   <div class="header"> 
-    <!-- Cambiamos los emojis por el icono de comentarios -->
     <h1><i class="fa-solid fa-comments"></i> Mensajes en Vivo</h1>
     
     <button class="btn-accion btn-borrar btn-limpiar-maestro" (click)="abrirModalLimpiar()">
@@ -14,7 +13,12 @@
     
     <div *ngFor="let m of saludos; let i = index" class="mensaje-card" [class.leido]="m.leido" [class.eliminando]="m.eliminando">
       
-      <div class="autor">{{ m.invitado }}</div>      
+      <!-- NUEVO: Nombre del invitado más elegante y con icono -->
+      <div class="autor">
+        <i class="fa-solid fa-heart" style="color: #a68a48; font-size: 0.8rem; margin-right: 5px;"></i> {{ m.invitado }}
+      </div>      
+      
+      <!-- NUEVO: Texto más grande y destacado -->
       <div class="texto">"{{ m.texto }}"</div>
       
       <div class="contenedor-foto" *ngIf="m.imagen">
@@ -27,7 +31,9 @@
       </div>
       
       <div class="pie-tarjeta">
-        <div class="hora" *ngIf="m.fechaEnvio">{{ m.fechaEnvio | date:'shortTime' }}</div>
+        <div class="hora" *ngIf="m.fechaEnvio">
+          <i class="fa-regular fa-clock"></i> {{ m.fechaEnvio | date:'shortTime' }}
+        </div>
         
         <div class="acciones-dj">
           <button class="btn-accion btn-visto" (click)="marcarVisto(m)">
@@ -46,7 +52,6 @@
 </div>
 
 <div class="lightbox-overlay" *ngIf="fotoExpandida" (click)="cerrarFoto()">
-  <!-- Cambiamos la X por el icono de FontAwesome -->
   <button class="btn-cerrar-lightbox" (click)="cerrarFoto()">
     <i class="fa-solid fa-xmark"></i>
   </button>
@@ -55,7 +60,6 @@
 
 <div class="modal-overlay" *ngIf="mostrarModalLimpiar" (click)="cerrarModalLimpiar()">
   <div class="modal-confirmacion" (click)="$event.stopPropagation()">
-    <!-- Cambiamos el emoji de alerta por el icono triangular -->
     <h3><i class="fa-solid fa-triangle-exclamation" style="color: #e74c3c; margin-right: 10px;"></i> ¿Limpiar toda la pantalla?</h3>
     <p>Se borrarán todos los mensajes actuales de la vista del DJ.</p>
     
@@ -64,4 +68,4 @@
       <button class="btn-modal btn-confirmar" (click)="confirmarLimpiarTablero()">Sí, limpiar todo</button>
     </div>
   </div>
-</div>  
+</div>
