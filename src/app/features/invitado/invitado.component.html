@@ -39,9 +39,8 @@
         </div>
       </div>
       
-      <!-- CAMBIAMOS ESTO PARA QUITAR EL NOMBRE LARGO -->
 <p *ngIf="nombreArchivo" class="nombre-archivo">
-  <i class="fa-solid fa-image" style="color: #a68a48;"></i> Imagen adjuntada correctamente
+  <i class="fa-solid fa-circle-check" style="color: #a68a48;"></i> Imagen adjuntada correctamente
 </p>
       
       <button type="submit" [disabled]="enviando || saludoForm.invalid" class="btn-enviar">
