@@ -316,6 +316,7 @@ h1 {
   background-color: #c0392b;
 }
 
+
 @keyframes fadeInModal {
   from { background-color: rgba(0, 0, 0, 0); }
   to { background-color: rgba(0, 0, 0, 0.8); }
@@ -325,7 +326,20 @@ h1 {
   from { opacity: 0; transform: scale(0.8); }
   to { opacity: 1; transform: scale(1); }
 }
+.footer-dj {
+  position: fixed; /* fixed asegura que siempre esté hasta abajo en la pantalla del DJ */
+  bottom: 16px;
+  width: 100%;
+  text-align: center;
+}
 
+.footer-dj p {
+  color: #d4af37; /* Tono dorado/amarillo oscuro */
+  font-size: 14px;
+  opacity: 0.5; /* Lo hace sutil y poco intrusivo */
+  font-weight: 300; /* Equivalente a font-light */
+  margin: 0;
+}
 /* =========================================
    MAGIA PARA CELULARES (Media Query)
    ========================================= */

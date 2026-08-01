@@ -261,6 +261,21 @@
   transform: scale(1.1);
   background-color: #c0392b !important;
 }
+.footer-invitados {
+  position: absolute;
+  bottom: 16px; /* Lo separa un poco del borde inferior */
+  width: 100%;
+  text-align: center;
+}
+
+.footer-invitados p {
+  color: #ffffff;
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 0;
+  /* Sombra para que se lea bien sobre cualquier foto */
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6); 
+}
 
 @media (max-width: 768px) {
   .contenedor-movil::after {
