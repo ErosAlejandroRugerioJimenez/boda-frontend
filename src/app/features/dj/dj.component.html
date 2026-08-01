@@ -1,10 +1,10 @@
 <div class="pantalla-dj">
-  
   <div class="header"> 
     <h1><i class="fa-solid fa-comments"></i> Mensajes en Vivo</h1>
     
+    <!-- Modificado: Se quitó el icono de la escoba -->
     <button class="btn-accion btn-borrar btn-limpiar-maestro" (click)="abrirModalLimpiar()">
-      <i class="fa-solid fa-broom"></i> Limpiar Tablero
+      Limpiar Tablero
     </button>
   </div>
 
@@ -13,19 +13,19 @@
     
     <div *ngFor="let m of saludos; let i = index" class="mensaje-card" [class.leido]="m.leido" [class.eliminando]="m.eliminando">
       
-      <!-- NUEVO: Nombre del invitado más elegante y con icono -->
+      <!-- Nombre del invitado más elegante y con icono -->
       <div class="autor">
         <i class="fa-solid fa-heart" style="color: #a68a48; font-size: 0.8rem; margin-right: 5px;"></i> {{ m.invitado }}
       </div>      
       
-      <!-- NUEVO: Texto más grande y destacado -->
+      <!-- Texto más grande y destacado -->
       <div class="texto">"{{ m.texto }}"</div>
       
       <div class="contenedor-foto" *ngIf="m.imagen">
         <img [src]="m.imagen"
              alt="Foto adjunta" 
              class="foto-saludo"
-            (click)="abrirFoto(m.imagen)"
+             (click)="abrirFoto(m.imagen)"
              style="cursor: zoom-in;"
              title="Clic para ampliar">
       </div>
@@ -60,7 +60,8 @@
 
 <div class="modal-overlay" *ngIf="mostrarModalLimpiar" (click)="cerrarModalLimpiar()">
   <div class="modal-confirmacion" (click)="$event.stopPropagation()">
-    <h3><i class="fa-solid fa-triangle-exclamation" style="color: #e74c3c; margin-right: 10px;"></i> ¿Limpiar toda la pantalla?</h3>
+    <!-- Modificado: Se quitó el triángulo de advertencia rojo -->
+    <h3>¿Limpiar toda la pantalla?</h3>
     <p>Se borrarán todos los mensajes actuales de la vista del DJ.</p>
     
     <div class="modal-botones">
@@ -68,7 +69,9 @@
       <button class="btn-modal btn-confirmar" (click)="confirmarLimpiarTablero()">Sí, limpiar todo</button>
     </div>
   </div>
+</div>
+
+<!-- CORRECCIÓN: El footer ahora está afuera del modal-overlay para que siempre sea visible -->
 <footer class="footer-dj">
   <p>&copy; 2026 Biglat Technologies.</p>
 </footer>
-</div>
